@@ -1,0 +1,18 @@
+name: rev_sync
+description: >-
+  Offline-first sync engine for Dart & Flutter: a connectivity-driven scheduler
+  plus a generic outbox push-queue and delta pull-reconciler over a server
+  revision (rev) cursor, with conflict detection. Backend- and store-agnostic.
+version: 1.0.0
+repository: https://github.com/kido-luci/rev_sync
+issue_tracker: https://github.com/kido-luci/rev_sync/issues
+topics:
+  - offline-first
+  - sync
+  - synchronization
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dev_dependencies:
+  test: ^1.31.0
