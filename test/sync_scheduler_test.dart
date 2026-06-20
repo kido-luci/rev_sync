@@ -12,11 +12,11 @@ void main() {
   tearDown(() => connectivity.dispose());
 
   SyncScheduler scheduler(Future<SyncOutcome> Function() body) => SyncScheduler(
-    body,
-    connectivity,
-    const Duration(milliseconds: 10),
-    const Duration(milliseconds: 40),
-  );
+        body,
+        connectivity,
+        const Duration(milliseconds: 10),
+        const Duration(milliseconds: 40),
+      );
 
   test('start runs an initial sync and idles on success', () async {
     var runs = 0;
