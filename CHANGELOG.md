@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+Shorten `pubspec.yaml` description to meet pub.dev's 60–180 character limit.
+
 ## 1.0.0
 
 Initial release.
