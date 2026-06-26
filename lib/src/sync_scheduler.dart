@@ -18,6 +18,12 @@ class SyncScheduler {
   /// Creates a scheduler that runs the given push/pull body on the triggers
   /// above. The optional positional durations tune the retry backoff (kept
   /// small in tests).
+  ///
+  /// Use one scheduler instance per synced resource per device. The
+  /// single-flight and generation guards assume exclusive ownership of that
+  /// resource's sync state; running two schedulers over the same store and
+  /// adapter concurrently is unsupported and can push the same pending rows
+  /// twice.
   SyncScheduler(
     this._body,
     this._connectivity, [
