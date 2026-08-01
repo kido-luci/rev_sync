@@ -27,7 +27,14 @@ abstract interface class SyncRemoteAdapter<T extends Syncable> {
   /// DELETEs a locally-tombstoned [row], echoing its base revision.
   Future<PushResult<T>> delete(T row);
 
-  /// Fetches every server change (including tombstones) with a revision greater
-  /// than [cursor], as [RemoteRecord]s.
+  /// Fetches server changes with a revision greater than [cursor], as
+  /// [RemoteRecord]s.
+  ///
+  /// Must be **complete**: return *every* record (including tombstones) whose
+  /// `rev` is greater than [cursor]. Order does not matter — the engine advances
+  /// the cursor to the highest `rev` among the returned records, then requests
+  /// changes above that on the next pull. So omitting a record whose `rev` sits
+  /// below another returned record's `rev` drops it permanently: the cursor
+  /// moves past it and no later pull will ever ask for it again.
   Future<List<RemoteRecord<T>>> listSince(int cursor);
 }
